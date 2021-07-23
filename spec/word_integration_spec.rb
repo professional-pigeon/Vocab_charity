@@ -20,7 +20,8 @@ describe('update a word path', {:type => :feature}) do
     visit('/words')
     click_on("duck")
     click_on('Change word or definition')
-    
-    expect(page).to have_content('Duck')
+    fill_in('word_name', :with => 'Pheasant')
+    fill_in('meaning', :with => 'A pretty bird')
+    expect(page.to have_content('Pheasant'))
   end
 end
