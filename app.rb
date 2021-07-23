@@ -23,11 +23,11 @@ post('/words') do
   word1 = Word.new(params[:word_name], params[:meaning], nil)
   word1.save
   @words = Word.all
-  binding.pry
   erb(:words)
 end
 
 get('/word/:id') do
+  @word = Word.find(params[:id].to_i)
   erb(:word)
 end
 
