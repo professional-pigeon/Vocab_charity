@@ -32,4 +32,5 @@ get('/word/:id') do
 end
 
 get('/word/:id/update_word') do
+  erb(:update_word)
 end
