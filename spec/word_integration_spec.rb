@@ -16,7 +16,7 @@ end
 
 describe('update a word path', {:type => :feature}) do
   it('creates a word then goes to the word page') do
-    word1 = Word.new("duck", "it quacks", nil)
+    word1 = Word.new({:word => "duck", :meaning => "it quacks"})
     word1.save
     visit('/words')
     click_on('duck')

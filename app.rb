@@ -20,7 +20,7 @@ get('/words/add_word') do
 end
 
 post('/words') do
-  word1 = Word.new(params[:word_name], params[:meaning], nil)
+  word1 = Word.new({:name => params[:word_name], :meaning => params[:meaning]})
   word1.save
   @words = Word.all
   erb(:words)
@@ -49,4 +49,7 @@ post('/word/:id') do
   @word.update(word, meaning)
   @word.save
   erb(:word)
+end
+
+delete('/word/:id') do
 end

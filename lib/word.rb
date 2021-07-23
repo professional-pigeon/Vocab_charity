@@ -5,10 +5,10 @@ class Word
   @@words = {}
   @@word_id = 0
 
-  def initialize (word, meaning, id)
-    @word = word
-    @meaning = meaning
-    @id = id || @@word_id += 1
+  def initialize(attributes)
+    @word = attributes.fetch(:word)
+    @meaning = attributes.fetch(:meaning)
+    @id = @@word_id += 1
   end
 
   def self.all
@@ -16,7 +16,7 @@ class Word
   end
 
   def save
-    @@words[self.id] = Word.new(self.word, self.meaning, self.id)
+    @@words[self.id] = Word.new({:word => self.word, :meaning => self.meaning, :id => self.id})
   end
 
   def ==(word_to_compare)
