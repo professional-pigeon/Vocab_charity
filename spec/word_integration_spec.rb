@@ -15,7 +15,7 @@ describe('add a word path', {:type => :feature}) do
 end
 
 describe('update a word path', {:type => :feature}) do
-  it('creates a word then goes to the word page') do
+  it('navigates to the word/id update page and updates the meaning') do
     word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
     word1.save
     visit('/words')
@@ -28,7 +28,7 @@ describe('update a word path', {:type => :feature}) do
 end
 
 describe('delete a word path', {:type => :feature}) do
-  it('creates a word then goes to the word page') do
+  it('navigates to the word/:id and deletes it') do
     Word.clear
     word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
     word1.save
@@ -38,4 +38,17 @@ describe('delete a word path', {:type => :feature}) do
     expect(page).to have_content('There are no words yet, but you can be the first!')
   end
 end
+
+describe('add an additiona meaning to word path', {:type => :feature}) do
+  it('adds an additional meaning to a word') do
+    Word.clear
+    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1.save
+    visit('/words')
+    click_on('duck')
+    click_on('Change or add definitions')
+    expect(page).to have_content('There are no words yet, but you can be the first!')
+  end
+end
+
 

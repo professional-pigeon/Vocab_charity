@@ -38,13 +38,21 @@ end
 
 post('/word/:id') do
   @word = Word.find(params[:id].to_i)
-  meaning = nil
-  if params[:meaning].length != 0
-    meaning = params[:meaning]
+  if params[:meaning_new].length != 0
+    meaning = ""
+    meaning.concat(@word.meaning, ". ", params[:meaning_new])
+    @word.update(nil, meaning)
+    @word.save
+    erb(:word)
+  else
+    meaning = nil
+    if params[:meaning].length != 0
+      meaning = params[:meaning]
+    end
+    @word.update(nil, meaning)
+    @word.save
+    erb(:word)
   end
-  @word.update(nil, meaning)
-  @word.save
-  erb(:word)
 end
 
 post('/word/:id/delete') do

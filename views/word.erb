@@ -1,6 +1,12 @@
 <h1><%= @word.word.upcase %><h1>
 
-<h4>Definition: <%= @word.meaning %></h4>
+<h4>Definition(s)</h4>
+<ul>
+  <% print_array = @word.meaning.split(".") %>
+  <% print_array.each do |definition|%>
+  <li><%= definition %></li>
+  <% end %>
+</ul>
 
 <a href="/word/<%= @word.id %>/update_word">Change or add definitions</a>
 <br>
