@@ -41,7 +41,7 @@ post('/word/:id') do
   word = nil
   meaning = nil
   if params[:word_name].length != 0
-    word = params[:word]
+    word = params[:word_name]
   end
   if params[:meaning].length != 0
     meaning = params[:meaning]
