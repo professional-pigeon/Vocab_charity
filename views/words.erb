@@ -1,0 +1,15 @@
+<h1>Word Space</h1>
+
+<h3>Here are some words your classmates have added!</h3>
+
+<% if @words.any? %>
+  <ul>
+      <% @words.each do |word| %>
+    <li><a href="/word/<%= word.id %>"><%= word.name %></a></li>
+  <% end %>
+  </ul>
+<% else %>
+  <p>There are no words yet! Be the first!</p>
+<% end %>
+
+<a href="/words/add_word">Add a new word</a>
