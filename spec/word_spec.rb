@@ -18,9 +18,20 @@ describe ('#Word') do
     it("allows an instance to be equal if the name is the same") do
     word1 = Word.new("ubiquitous", "to be present or appearing everywhere", nil)
     word1.save
-    word2 = Word.new("murmors", "a soft sound made by people speaking quietly or far away", nil)
+    word3 = Word.new("ubiquitous", "not to be compared", nil)
+    word3.save
+    expect(word1).to(eq(word3))
+    end
+  end
+
+  describe('.clear') do
+    it("allows an instance to be equal if the name is the same") do
+    word1 = Word.new("ubiquitous", "to be present or appearing everywhere", nil)
+    word1.save
+    word2 = Word.new("murmurs", "quiet talking by people either near or far", nil)
     word2.save
-    expect(word1).to(eq(word2))
+    Word.clear
+    expect(Word.all).to(eq([]))
     end
   end
 
