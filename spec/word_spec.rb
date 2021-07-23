@@ -48,8 +48,8 @@ describe ('#Word') do
 
   describe('#update') do
     it("updates a word in the @@word hash by it's id") do
-    @word1.update("Juice")
-    expect(@word1.name).to(eq("juice"))
+    @word1.update("Juice", nil)
+    expect(@word1.word).to(eq("Juice"))
     end
   end
 

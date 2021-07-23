@@ -1,3 +1,5 @@
+require 'pry'
+
 class Word
   attr_reader :word, :meaning, :id
   @@words = {}
@@ -32,6 +34,11 @@ class Word
 
   def self.find(id)
     @@words[id]
+  end
+
+  def update(word, meaning)
+    @word = word || @word
+    @meaning = meaning || @meaning
   end
 
 
