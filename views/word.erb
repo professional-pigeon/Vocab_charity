@@ -2,6 +2,13 @@
 
 <h4>Definition: <%= @word.meaning %></h4>
 
-<a href="/word/<%= @word.id %>/update_word">Change word or definition</a>
+<a href="/word/<%= @word.id %>/update_word">Change or add definitions</a>
 <br>
 <a href="/words">Go back</a>
+
+<br>
+
+<form action="/word/<%= @word.id %>/delete" method="post">
+  <input name="method" type="hidden" value="delete">
+  <button type="submit" class="btn-primary">Delete Word</button>
+</form>

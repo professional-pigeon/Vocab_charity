@@ -2,15 +2,20 @@
 
 <form action="/word/<%= @word.id %>" method="post">
   <div class="form-group">
-    <label for="word_name">Rename Word: optional</label>
-    <input id="n" name="word_name" class="form-control" type="text">
-    <label for="meaning">Redefine-word: optional</label>
-    <input id="a" name="meaning" class="form-control" type="text">
+    <label for="meaning">Change Definition</label>
+    <input id="n" name="meaning" class="form-control" type="text">
   </div>
-  <button type="submit" class="btn-primary">Update</button>
+  <button type="submit" class="btn-primary">Update Definition</button>
 </form>
 <br>
-<form action="/word/<%= @word.id %>" method="post">
-  <input name="method" type="hidden" value="delete">
-  <button type="submit" class="btn-primary">Delete Word</button>
+
+<form action="/word/<%= @word.id %>" method="post" id="delete">
+  <div class="form-group">
+    <label for="meaning_new">Change Definition</label>
+    <input id="n" name="meaning_new" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn-warning" id="delete">Add Definition</button>
 </form>
+
+<br>
+

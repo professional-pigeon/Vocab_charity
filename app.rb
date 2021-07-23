@@ -38,18 +38,19 @@ end
 
 post('/word/:id') do
   @word = Word.find(params[:id].to_i)
-  word = nil
   meaning = nil
-  if params[:word_name].length != 0
-    word = params[:word_name]
-  end
   if params[:meaning].length != 0
     meaning = params[:meaning]
   end
-  @word.update(word, meaning)
+  @word.update(nil, meaning)
   @word.save
   erb(:word)
 end
 
-delete('/word/:id') do
+post('/word/:id/delete') do
+  binding.pry
+  @word = Word.find(params[:id].to_i)
+  @word.delete
+  @words = Word.all
+  redirect to ('/words')
 end
