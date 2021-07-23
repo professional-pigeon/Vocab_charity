@@ -21,5 +21,9 @@ class Word
     self.word == word_to_compare.word
   end
 
+  def self.clear
+    @@words = {}
+    @@word_id = 0
+  end
 
 end
