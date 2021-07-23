@@ -26,4 +26,5 @@ class Word
     @@word_id = 0
   end
 
+
 end
