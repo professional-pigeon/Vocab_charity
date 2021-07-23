@@ -48,7 +48,6 @@ post('/word/:id') do
 end
 
 post('/word/:id/delete') do
-  binding.pry
   @word = Word.find(params[:id].to_i)
   @word.delete
   @words = Word.all

@@ -26,3 +26,16 @@ describe('update a word path', {:type => :feature}) do
     expect(page).to have_content('A pretty bird')
   end
 end
+
+describe('delete a word path', {:type => :feature}) do
+  it('creates a word then goes to the word page') do
+    Word.clear
+    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1.save
+    visit('/words')
+    click_on('duck')
+    click_on('Delete Word')
+    expect(page).to have_content('There are no words yet, but you can be the first!')
+  end
+end
+
