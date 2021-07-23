@@ -38,16 +38,7 @@ You can see the website [here](https://murmuring-waters-75236.herokuapp.com/)
 
 ## Known Bugs
 
-* Currently the heroku deployment is not working
-
-## Valid Word Tests
-
-There is a section that tests whether a word is legal without referencing a dictionary.
-
-There are three rules currently
-* a word must contain a vowel
-* a word must not have the same consonant three times in a row
-* a word with a length of 1 character is only valid if it is I or A. 
+* You can create blank entries or update blank definitions currently
 
 ## License
 
