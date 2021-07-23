@@ -38,7 +38,7 @@ end
 
 post('/word/:id') do
   @word = Word.find(params[:id].to_i)
-  if params[:meaning_new].length != 0
+  if params[:meaning_new] != nil
     meaning = ""
     meaning.concat(@word.meaning, ". ", params[:meaning_new])
     @word.update(nil, meaning)

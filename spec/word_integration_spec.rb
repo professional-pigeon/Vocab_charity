@@ -22,7 +22,7 @@ describe('update a word path', {:type => :feature}) do
     click_on('duck')
     click_on('Change or add definitions')
     fill_in('meaning', :with => 'A pretty bird')
-    click_on('Update')
+    click_on('Update Definition')
     expect(page).to have_content('A pretty bird')
   end
 end
@@ -47,7 +47,9 @@ describe('add an additiona meaning to word path', {:type => :feature}) do
     visit('/words')
     click_on('duck')
     click_on('Change or add definitions')
-    expect(page).to have_content('There are no words yet, but you can be the first!')
+    fill_in('meaning_new', :with => "it also flies!" )
+    click_on('Add Definition')
+    expect(page).to have_content('it also flies!')
   end
 end
 
