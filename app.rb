@@ -1,18 +1,17 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/album')
-require('./lib/song')
+require('./lib/word')
 require('pry')
 also_reload('lib/**/*.rb')
 
 
 get('/') do
-  @words = Words.all
+  @words = Word.all
   erb(:words)
 end
 
 get('/words') do
-  @words = Words.all
+  @words = Word.all
   erb(:words)
 end
 
