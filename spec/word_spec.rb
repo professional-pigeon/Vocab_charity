@@ -33,7 +33,7 @@ describe ('#Word') do
     end
   end
 
-  describe('#clear') do
+  describe('#delete') do
     it("deletes a word by id") do
     @word1.delete
     expect(Word.all).to(eq([@word2]))
@@ -43,6 +43,13 @@ describe ('#Word') do
   describe('.find') do
     it("finds a word in the @@word hash by it's id") do
     expect(Word.find(@word1.id)).to(eq(@word1))
+    end
+  end
+
+  describe('#update') do
+    it("updates a word in the @@word hash by it's id") do
+    @word1.update("Juice")
+    expect(@word1.name).to(eq("juice"))
     end
   end
 
