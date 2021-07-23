@@ -32,5 +32,22 @@ get('/word/:id') do
 end
 
 get('/word/:id/update_word') do
+  @word = Word.find(params[:id].to_i)
   erb(:update_word)
+end
+
+post('/word/:id') do
+  @word = Word.find(params[:id].to_i)
+  word = nil
+  meaning = nil
+  if params[:word_name].length != 0
+    word = params[:word]
+  end
+  if params[:meaning].length != 0
+    meaning = params[:meaning]
+  end
+  binding.pry
+  @word.update(word, meaning)
+  @word.save
+  erb(:word)
 end
