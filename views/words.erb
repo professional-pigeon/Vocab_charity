@@ -4,12 +4,12 @@
 
 <% if @words.any? %>
   <ul>
-      <% @words.each do |word| %>
-    <li><a href="/word/<%= word.id %>"><%= word.name %></a></li>
+      <% @words.each do |word_individual| %>
+    <li><a href="/word/<%= word_individual.id %>"><%= word_individual.word %></a></li>
   <% end %>
   </ul>
 <% else %>
   <p>There are no words yet, but you can be the first!<p>
 <% end %>
 
-<a href="/words/add_word">"Add Your Word"</a>
+<a href="/words/add_word">Add Your Word</a>
