@@ -46,7 +46,6 @@ post('/word/:id') do
   if params[:meaning].length != 0
     meaning = params[:meaning]
   end
-  binding.pry
   @word.update(word, meaning)
   @word.save
   erb(:word)

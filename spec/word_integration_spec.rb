@@ -17,11 +17,13 @@ end
 describe('update a word path', {:type => :feature}) do
   it('creates a word then goes to the word page') do
     word1 = Word.new("duck", "it quacks", nil)
+    word1.save
     visit('/words')
-    click_on("duck")
+    click_on('duck')
     click_on('Change word or definition')
     fill_in('word_name', :with => 'Pheasant')
     fill_in('meaning', :with => 'A pretty bird')
-    expect(page.to have_content('Pheasant'))
+    click_on('Update')
+    expect(page).to have_content('PHEASANT')
   end
 end
