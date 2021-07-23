@@ -1,0 +1,17 @@
+body {
+  background: linear-gradient(pink, cyan);
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position-y: bottom;
+  min-height: 100vh;
+}
+.container {
+  background-color: rgba(242, 235, 235, 0.85);
+  margin-top:1rem;
+  padding:1rem;
+}
+/* 
+button a, button a:hover {
+  color:red;
+  text-decoration: none;
+} */

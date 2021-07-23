@@ -46,7 +46,7 @@ post('/word/:id') do
     erb(:word)
   else
     meaning = nil
-    if params[:meaning].length != 0
+    if params[:meaning] != nil
       meaning = params[:meaning]
     end
     @word.update(nil, meaning)
