@@ -40,5 +40,11 @@ describe ('#Word') do
     end
   end
 
+  describe('.find') do
+    it("finds a word in the @@word hash by it's id") do
+    expect(Word.find(@word1.id)).to(eq(@word1))
+    end
+  end
+
 
 end
