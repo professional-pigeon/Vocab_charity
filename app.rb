@@ -1,6 +1,7 @@
 require('sinatra')
 require('sinatra/reloader')
 require('./lib/word')
+require('./lib/definition')
 require('pry')
 also_reload('lib/**/*.rb')
 
@@ -20,7 +21,7 @@ get('/words/add_word') do
 end
 
 post('/words') do
-  word1 = Word.new({:word => params[:word_name], :meaning => params[:meaning]}, nil)
+  word1 = Word.new({:word => params[:word_name]}, nil)
   word1.save
   @words = Word.all
   erb(:words)
@@ -28,32 +29,36 @@ end
 
 get('/word/:id') do
   @word = Word.find(params[:id].to_i)
-  # @meanings = Meaning.find(params[:id].to_i)
+  @definitions = @word.definitions
   erb(:word)
 end
 
 get('/word/:id/update_word') do
   @word = Word.find(params[:id].to_i)
-  @meaning = Meaning.find(params[:id].to_i)
   erb(:update_word)
 end
 
-post('/word/:id') do
+post('/word/:id/update_word') do
   @word = Word.find(params[:id].to_i)
-  if params[:meaning_new] != nil
-    meaning = ""
-    meaning.concat(@word.meaning, ". ", params[:meaning_new])
-    @word.update(nil, meaning)
-    @word.save
-    erb(:word)
+  if params[:spelling] != ""
+    @word.update(params[:spelling])
+    redirect to ("word/#{params[:id]}")   
+  end
+end
+
+get('/word/:id/add_definition') do
+  @word = Word.find(params[:id].to_i)
+  erb(:add_definition)
+end
+
+post('/word/:id/add_definition') do
+  @word = Word.find(params[:id].to_i)
+  if params[:def_name] != ""
+    @definition = Definition.new({:meaning => params[:def_name], :word_id => params[:id].to_i}, nil)
+    @definition.save
+    redirect to ("word/#{params[:id]}")    
   else
-    meaning = nil
-    if params[:meaning] != nil
-      meaning = params[:meaning]
-    end
-    @word.update(nil, meaning)
-    @word.save
-    erb(:word)
+    redirect to ("word/#{params[:id]}")    
   end
 end
 

@@ -68,10 +68,9 @@ describe ('#definition') do
     it("returns the word a meaning belongs to") do
       @word1 = Word.new({:word => "ubiquitous"}, nil)
       @word1.save
-      expect(@definition1.words).to(eq(@word1))
+      expect(@definition1.word).to(eq(@word1))
     end
   end
-
 
 
 end

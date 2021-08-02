@@ -1,20 +1,27 @@
 <h1><%= @word.word.upcase %><h1>
 
 <h4>Definition(s)</h4>
-<ul>
-  <% print_array = @word.meaning.split(".") %>
-  <% print_array.each do |definition|%>
-  <li><%= definition %></li>
-  <% end %>
-</ul>
+<% if @definitions.any? %>
+  <ul>
+    <% @definitions.each do |definition|%>
+    <li><%= definition.meaning %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No definitions yet!</p>
+<% end %>
 
-<a href="/word/<%= @word.id %>/update_word">Change or add definitions</a>
-<br>
-<a href="/words">Go back</a>
+<a href="/word/<%= @word.id %>/update_word">Change a word</a>
 
 <br>
+
+<a href="/word/<%= @word.id %>/add_definition">Add a Definition</a>
 
 <form action="/word/<%= @word.id %>/delete" method="post">
   <input name="method" type="hidden" value="delete">
   <button type="submit" class="btn-primary">Delete Word</button>
 </form>
+
+<br>
+
+<a href="/words">Go back</a>

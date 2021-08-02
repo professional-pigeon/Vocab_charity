@@ -1,5 +1,4 @@
 require 'pry'
-require 'word'
 
 class Definition
   attr_reader :word_id, :meaning, :id
