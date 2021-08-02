@@ -49,12 +49,12 @@ describe ('#definition') do
     end
   end
 
-  # describe('#update') do
-  #   it("updates a word in the @@word hash by it's id") do
-  #   @word1.update("Juice", nil)
-  #   expect(@word1.word).to(eq("Juice"))
-  #   end
-  # end
+  describe('#update') do
+    it("updates a definition in the @@definition hash by it's id") do
+    @definition1.update("A new definition")
+    expect(@word1.word).to(eq("A new definition"))
+    end
+  end
 
 
 end

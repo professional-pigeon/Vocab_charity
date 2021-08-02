@@ -6,9 +6,9 @@ describe ('#Word') do
 
   before(:each) do
     Word.clear
-    @word1 = Word.new({:word => "ubiquitous", :meaning => "to be ever present"}, nil)
+    @word1 = Word.new({:word => "ubiquitous"}, nil)
     @word1.save
-    @word2 = Word.new({:word => "murmors", :meaning => "a soft sound made by people speaking quietly or far away"}, nil)
+    @word2 = Word.new({:word => "murmors",}, nil)
     @word2.save
   end
   
@@ -20,7 +20,7 @@ describe ('#Word') do
 
   describe('#==') do
     it("allows an instance to be equal if the name is the same") do
-    word3 = Word.new({:word => "ubiquitous", :meaning => "to be ever present"}, nil)
+    word3 = Word.new({:word => "ubiquitous"}, nil)
     word3.save
     expect(@word1).to(eq(word3))
     end
@@ -48,7 +48,7 @@ describe ('#Word') do
 
   describe('#update') do
     it("updates a word in the @@word hash by it's id") do
-    @word1.update("Juice", nil)
+    @word1.update("Juice")
     expect(@word1.word).to(eq("Juice"))
     end
   end
