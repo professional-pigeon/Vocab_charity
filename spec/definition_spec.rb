@@ -6,12 +6,14 @@ describe ('#definition') do
 
   describe('#save') do
 
-    
-    it("saves an instance of a definition to the definition class") do
-      @def1 = Definition.new({:id => nil, :meaning => "to be defined", :word_id => 1})
+    before(:each) do
+      @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
       @def1.save
-      @def2 = Definition.new({:id => nil, :meaning => "to be defined", :word_id => 1})
+      @def2 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
       @def2.save
+    end
+
+    it("saves an instance of a definition to the definition class") do
       expect(Definition.all).to(eq([@def1, @def2]))
     end
   end
