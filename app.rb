@@ -16,10 +16,6 @@ get('/words') do
   erb(:words)
 end
 
-get('/words/add_word') do
-  erb(:add_word)
-end
-
 post('/words') do
   word1 = Word.new({:word => params[:word_name]}, nil)
   word1.save
@@ -33,22 +29,12 @@ get('/word/:id') do
   erb(:word)
 end
 
-get('/word/:id/update_word') do
-  @word = Word.find(params[:id].to_i)
-  erb(:update_word)
-end
-
 post('/word/:id/update_word') do
   @word = Word.find(params[:id].to_i)
   if params[:spelling] != ""
     @word.update(params[:spelling])
     redirect to ("word/#{params[:id]}")   
   end
-end
-
-get('/word/:id/add_definition') do
-  @word = Word.find(params[:id].to_i)
-  erb(:add_definition)
 end
 
 post('/word/:id/add_definition') do

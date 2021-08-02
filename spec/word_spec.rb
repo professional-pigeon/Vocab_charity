@@ -22,22 +22,22 @@ describe ('#Word') do
 
   describe('#==') do
     it("allows an instance to be equal if the name is the same") do
-    word3 = Word.new({:word => "ubiquitous"}, nil)
-    word3.save
+      word3 = Word.new({:word => "ubiquitous"}, nil)
+      word3.save
     expect(@word1).to(eq(word3))
     end
   end
 
   describe('.clear') do
     it("allows an instance to be equal if the name is the same") do
-    Word.clear
+      Word.clear
     expect(Word.all).to(eq([]))
     end
   end
 
   describe('#delete') do
     it("deletes a word by id") do
-    @word1.delete
+      @word1.delete
     expect(Word.all).to(eq([@word2]))
     end
   end
@@ -50,18 +50,29 @@ describe ('#Word') do
 
   describe('#update') do
     it("updates a word in the @@word hash by it's id") do
-    @word1.update("Juice")
-    expect(@word1.word).to(eq("Juice"))
+      @word1.update("Juice")
+      expect(@word1.word).to(eq("Juice"))
     end
   end
 
-describe('#meanings') do
+  describe('#meanings') do
     it("returns a words meanings") do
       @definition1 = Definition.new({:meaning => "to be defined", :word_id => @word1.id}, nil)
       @definition1.save
       @definition2 = Definition.new({:meaning => "to be thought about", :word_id => @word1.id}, nil)
       @definition2.save
       expect(@word1.definitions).to(eq([@definition1, @definition2]))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes all definitions associated with a word") do
+      @definition1 = Definition.new({:meaning => "to be defined", :word_id => @word1.id}, nil)
+      @definition1.save
+      @definition2 = Definition.new({:meaning => "to be thought about", :word_id => @word1.id}, nil)
+      @definition2.save
+      @word1.delete
+      expect(Definition.all).to(eq([]))
     end
   end
 

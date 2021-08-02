@@ -29,6 +29,10 @@ class Word
 
   def delete
     @@words.delete(self.id)
+    defintions_to_delete = Definition.find_by_word(self.id)
+    defintions_to_delete.each do |definition|
+      definition.delete
+    end
   end
 
   def self.find(id)
