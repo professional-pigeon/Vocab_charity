@@ -14,7 +14,7 @@ end
 
 describe('update a word path', {:type => :feature}) do
   it('navigates to the word update page and updates the word spelling') do
-    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1 = Word.new({:word => "duck"}, nil)
     word1.save
     visit('/words')
     click_on('duck')
@@ -27,7 +27,7 @@ end
 describe('delete a word path', {:type => :feature}) do
   it('navigates to the word/:id and deletes it') do
     Word.clear
-    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1 = Word.new({:word => "duck"}, nil)
     word1.save
     visit('/words')
     click_on('duck')
@@ -36,10 +36,10 @@ describe('delete a word path', {:type => :feature}) do
   end
 end
 
-describe('add a meaning to a word', {:type => :feature}) do
+describe('add a meaning to a word path', {:type => :feature}) do
   it('adds a meaning to a word') do
     Word.clear
-    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1 = Word.new({:word => "duck"}, nil)
     word1.save
     visit('/words')
     click_on('duck')
@@ -48,5 +48,22 @@ describe('add a meaning to a word', {:type => :feature}) do
     expect(page).to have_content('it also flies!')
   end
 end
+
+describe('change the meaning of a word path', {:type => :feature}) do
+  it('changes the meaning of a word') do
+    Word.clear
+    word1 = Word.new({:word => "duck"}, nil)
+    word1.save    
+    definition1 = Definition.new({:meaning => "it quacks", :word_id => word1.id}, nil)
+    definition1.save
+    visit('/words')
+    click_on('duck')
+    click_on('it quacks')
+    fill_in('new_def', :with => "it quacks loud!" )
+    click_on('Update Definition')
+    expect(page).to have_content('it quacks loud!')
+  end
+end
+
 
 
