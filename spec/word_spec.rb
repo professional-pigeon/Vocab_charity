@@ -75,6 +75,4 @@ describe ('#Word') do
       expect(Definition.all).to(eq([]))
     end
   end
-
-
 end

@@ -1,0 +1,16 @@
+ <h4>Definition to edit: <%= @definition.meaning %></h4>    
+    
+<form action="/definition/<%= @definition.id %>/update" method="post">
+  <div class="form-group">
+    <label for="spelling">Change Definition</label>
+    <input id="n" name="spelling" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn-primary">Update Word</button>
+</form>
+
+<form action="/definition/<%= @definition.id %>/delete" method="post">
+  <input name="method" type="hidden" value="delete">
+  <button type="submit" class="btn-primary">Delete Definition</button>
+</form>
+
+<a href="/words/<%= @definition.word_id %>">Go back</a>
