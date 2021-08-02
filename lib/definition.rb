@@ -42,4 +42,14 @@ class Definition
     @meaning = meaning
   end
 
+  def self.find_by_word(word_id)
+    meanings = []
+    @@meanings.values.each do |meaning|
+      if meaning.word_id == word_id
+        meanings.push(meaning)
+      end
+    end
+    meanings
+  end
+
 end

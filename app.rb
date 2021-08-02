@@ -28,11 +28,13 @@ end
 
 get('/word/:id') do
   @word = Word.find(params[:id].to_i)
+  # @meanings = Meaning.find(params[:id].to_i)
   erb(:word)
 end
 
 get('/word/:id/update_word') do
   @word = Word.find(params[:id].to_i)
+  @meaning = Meaning.find(params[:id].to_i)
   erb(:update_word)
 end
 

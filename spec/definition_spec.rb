@@ -56,5 +56,12 @@ describe ('#definition') do
     end
   end
 
+  describe('.find_by_word') do
+    it("finds a definition in the @@definition hash by it's id") do
+    expect(Definition.find_by_word(@definition1.word_id)).to(eq([@definition1, @definition2]))
+    end
+  end
+
+
 
 end
