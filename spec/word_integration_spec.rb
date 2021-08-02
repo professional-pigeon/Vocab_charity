@@ -65,5 +65,24 @@ describe('change the meaning of a word path', {:type => :feature}) do
   end
 end
 
+describe('change the meaning of a word path', {:type => :feature}) do
+  it('changes the meaning of a word') do
+    Word.clear
+    Definition.clear
+    word1 = Word.new({:word => "duck"}, nil)
+    word1.save    
+    definition1 = Definition.new({:meaning => "it quacks", :word_id => word1.id}, nil)
+    definition1.save
+    visit('/words')
+    click_on('duck')
+    click_on('it quacks')
+    click_on('Delete Definition')
+    expect(page).to have_content('No definitions yet!')
+  end
+end
+
+
+
+
 
 
