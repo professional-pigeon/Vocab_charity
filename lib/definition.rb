@@ -2,7 +2,7 @@ require 'pry'
 
 class Definition
   attr_reader :word_id, :meaning, :id
-  @@definitions = {}
+  @@meanings = {}
   @@id = 0
 
   def initialize(attributes, id)
@@ -12,12 +12,12 @@ class Definition
   end
 
   def self.all
-    @@definitions.values()
+    @@meanings.values()
   end
 
 
   def save
-    @@definitions[self.id] = Definition.new({:meaning => self.meaning, :word_id => self.word_id}, self.id)
+    @@meanings[self.id] = Definition.new({:meaning => self.meaning, :word_id => self.word_id}, self.id)
   end
 
 
@@ -26,8 +26,12 @@ class Definition
   end
 
   def self.clear
-    @@definitions = {}
+    @@meanings = {}
     @@id = 0
+  end
+
+  def delete
+    @@meanings.delete(self.id)
   end
 
 end

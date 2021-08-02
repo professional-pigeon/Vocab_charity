@@ -4,18 +4,17 @@ require "definition"
 
 describe ('#definition') do
 
+  before(:each) do
+    Definition.clear
+    @definition1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
+    @definition1.save
+    @definition2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
+    @definition2.save
+  end
+
   describe('#save') do
-
-    before(:each) do
-      Definition.clear
-      @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
-      @def1.save
-      @def2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
-      @def2.save
-    end
-
     it("saves an instance of a definition to the definition class") do
-      expect(Definition.all).to(eq([@def1, @def2]))
+      expect(Definition.all).to(eq([@definition1, @definition2]))
     end
   end
 
@@ -39,8 +38,8 @@ describe ('#definition') do
 
   describe('#delete') do
     it("deletes a meaning by it's id") do
-    @def1.delete
-    expect(Word.all).to(eq([@def2]))
+    @definition1.delete
+    expect(Definition.all).to(eq([@definition2]))
     end
   end
 
