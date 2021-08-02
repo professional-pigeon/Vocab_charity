@@ -55,16 +55,3 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 ## Contact Information
 
 Kyle.KayPerez@gmail.com
-
-Changes for resubmission
-
-Hi Kyle, you're off to a really good start with this project. You've created a Word class and properly defined all of its methods. Your tests for the Word class are well written and are passing. Your routes follow REST conventions and are working to deliver full CRUD functionality. I like that you've added some styling as well. To get this project to meet all requirements you just need to define another class for Definitions. Currently, you're adding a definition by passing in:meaning from the params hash when you initialize an new Word object. Instead, the prompt wants you to create a new Definition object and associate it with a Word that's already in the @@words "database" in the Word class. The Definition class should include all the methods you included in your Word class to deliver full CRUD functionality. You'll need to add views for Definitions that the user will access via the additional routes you'll need to create in app.rb. This might sound like a lot but it's essentially just repeating what you've done so far with your Word class, only the extra routing adds a bit more complexity. I'd recommend looking at last week's Record Store project and following along with the lessons on Nested Routing and the Song class if you need a reference.
-
-Like I said, you've got a solid foundation. Keeping working and you'll get this passing soon. If you have any questions or could use any clarification, feel free to reach out via Discord or email and I'll be happy to help.
-
-Create Definition class and define routes for CRUD functionality
-Create views for Definition class
-Include complete unit testing for all methods within Definition class and integration testing for routes pertaining to Definition class
-Fullfill all Objectives of this project
-
-Make an application that contains a Word class. The homepage of the app should list all words. When a word is clicked, it should lead to a page with the word's definitions. Children should be able to add a word, and when viewing a word, be able to add, update or delete one or more definitions. This week you should deploy your application to Heroku so the kids can try it out!

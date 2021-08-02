@@ -2,8 +2,8 @@
     
 <form action="/definition/<%= @definition.id %>/update" method="post">
   <div class="form-group">
-    <label for="spelling">Change Definition</label>
-    <input id="n" name="spelling" class="form-control" type="text">
+    <label for="new_def">Change Definition</label>
+    <input id="n" name="new_def" class="form-control" type="text">
   </div>
   <button type="submit" class="btn-primary">Update Word</button>
 </form>
@@ -13,4 +13,4 @@
   <button type="submit" class="btn-primary">Delete Definition</button>
 </form>
 
-<a href="/words/<%= @definition.word_id %>">Go back</a>
+<a href="/word/<%= @definition.word_id %>">Go back</a>
