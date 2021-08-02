@@ -7,6 +7,7 @@ describe ('#definition') do
   describe('#save') do
 
     before(:each) do
+      Definition.clear
       @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
       @def1.save
       @def2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
@@ -20,19 +21,25 @@ describe ('#definition') do
 
   describe('#==') do
     it("allows an instance to be equal if the name is the same") do
-      @def3 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
-      @def3.save
-      binding.pry
-    expect(@def1).to(eq(@def3))
+      def3 = Definition.new({:meaning => "We should be the same", :word_id => 1}, nil)
+      def3.save
+      def4 = Definition.new({:meaning => "We should be the same", :word_id => 1}, nil)
+      def4.save
+      expect(def3).to(eq(def4))
     end
   end
 
-  # describe('.clear') do
-  #   it("allows an instance to be equal if the name is the same") do
-  #   Word.clear
-  #   expect(Word.all).to(eq([]))
-  #   end
-  # end
+
+  describe('.clear') do
+    it("clears all instances of defintion attached to the definition class") do
+    @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
+    @def1.save
+    @def2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
+    @def2.save
+    Definition.clear
+    expect(Word.all).to(eq([]))
+    end
+  end
 
   # describe('#delete') do
   #   it("deletes a word by id") do

@@ -25,4 +25,9 @@ class Definition
     self.meaning == meaning_to_compare.meaning
   end
 
+  def self.clear
+    @@definitions = {}
+    @@id = 0
+  end
+
 end
