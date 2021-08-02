@@ -9,7 +9,7 @@ describe ('#definition') do
     before(:each) do
       @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
       @def1.save
-      @def2 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
+      @def2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
       @def2.save
     end
 
@@ -18,13 +18,14 @@ describe ('#definition') do
     end
   end
 
-  # describe('#==') do
-  #   it("allows an instance to be equal if the name is the same") do
-  #   word3 = Word.new({:word => "ubiquitous", :meaning => "to be ever present"}, nil)
-  #   word3.save
-  #   expect(@word1).to(eq(word3))
-  #   end
-  # end
+  describe('#==') do
+    it("allows an instance to be equal if the name is the same") do
+      @def3 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
+      @def3.save
+      binding.pry
+    expect(@def1).to(eq(@def3))
+    end
+  end
 
   # describe('.clear') do
   #   it("allows an instance to be equal if the name is the same") do
