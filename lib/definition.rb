@@ -5,9 +5,10 @@ class Definition
   @@definitions = {}
   @@id = 0
 
-  def initialize(attributes, id)
+  def initialize(attributes)
     @meaning = attributes.fetch(:meaning)
     @id = id ||@@id += 1
+    @word_id = attributes.fetch(:word_id)
   end
 
   def self.all
