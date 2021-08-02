@@ -34,4 +34,8 @@ class Definition
     @@meanings.delete(self.id)
   end
 
+  def self.find(id)
+    @@meanings[id]
+  end
+
 end
