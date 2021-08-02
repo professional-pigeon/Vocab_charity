@@ -31,7 +31,7 @@ get('/word/:id') do
   erb(:word)
 end
 
-post('/word/:id/update_word') do
+patch('/word/:id/update_word') do
   @word = Word.find(params[:id].to_i)
   if params[:spelling] != ""
     @word.update(params[:spelling])
@@ -48,7 +48,7 @@ post('/word/:id/add_definition') do
   redirect to ("word/#{params[:id]}")   
 end
 
-post('/word/:id/delete') do
+delete('/word/:id/delete') do
   @word = Word.find(params[:id].to_i)
   @word.delete
   redirect to ('/words')
@@ -59,14 +59,14 @@ get('/definition/:id') do
   erb(:update_def)
 end
 
-post('/definition/:id/delete') do
+delete('/definition/:id/delete') do
   @definition = Definition.find(params[:id].to_i)
   word_id = @definition.word_id
   @definition.delete
   redirect to ("/word/#{word_id}")
 end
 
-post('/definition/:id/update') do
+patch('/definition/:id/update') do
   @definition = Definition.find(params[:id].to_i)
   if params[:new_def] != ""
     @definition.update(params[:new_def])
