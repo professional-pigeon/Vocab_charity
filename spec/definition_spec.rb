@@ -52,7 +52,7 @@ describe ('#definition') do
   describe('#update') do
     it("updates a definition in the @@definition hash by it's id") do
     @definition1.update("A new definition")
-    expect(@word1.word).to(eq("A new definition"))
+    expect(@definition1.meaning).to(eq("A new definition"))
     end
   end
 

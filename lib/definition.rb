@@ -38,4 +38,8 @@ class Definition
     @@meanings[id]
   end
 
+  def update(meaning)
+    @meaning = meaning
+  end
+
 end
