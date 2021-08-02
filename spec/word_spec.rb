@@ -53,5 +53,15 @@ describe ('#Word') do
     end
   end
 
+describe('#meanings') do
+    it("returns a words meanings") do
+      @definition1 = Definition.new({:meaning => "to be defined", :word_id => @word1.id}, nil)
+      @definition1.save
+      @definition2 = Definition.new({:meaning => "to be thought about", :word_id => @word1.id}, nil)
+      @definition2.save
+      expect(@word1.meanings).to(eq([definition1, definition2]))
+    end
+  end
+
 
 end
