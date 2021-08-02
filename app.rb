@@ -48,7 +48,7 @@ post('/word/:id/add_definition') do
   redirect to ("word/#{params[:id]}")   
 end
 
-delete('/word/:id/delete') do
+post('/word/:id/delete') do
   @word = Word.find(params[:id].to_i)
   @word.delete
   redirect to ('/words')
@@ -59,7 +59,7 @@ get('/definition/:id') do
   erb(:update_def)
 end
 
-delete('/definition/:id/delete') do
+post('/definition/:id/delete') do
   @definition = Definition.find(params[:id].to_i)
   word_id = @definition.word_id
   @definition.delete
