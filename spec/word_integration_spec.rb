@@ -12,18 +12,17 @@ describe('add a word path', {:type => :feature}) do
   end
 end
 
-# describe('update a word path', {:type => :feature}) do
-#   it('navigates to the word/id update page and updates the meaning') do
-#     word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
-#     word1.save
-#     visit('/words')
-#     click_on('duck')
-#     click_on('Change or add definitions')
-#     fill_in('meaning', :with => 'A pretty bird')
-#     click_on('Update Definition')
-#     expect(page).to have_content('A pretty bird')
-#   end
-# end
+describe('update a word path', {:type => :feature}) do
+  it('navigates to the word update page and updates the word spelling') do
+    word1 = Word.new({:word => "duck", :meaning => "it quacks"}, nil)
+    word1.save
+    visit('/words')
+    click_on('duck')
+    fill_in('spelling', :with => 'hawk')
+    click_on('Update Word')
+    expect(page).to have_content('HAWK')
+  end
+end
 
 # describe('delete a word path', {:type => :feature}) do
 #   it('navigates to the word/:id and deletes it') do
