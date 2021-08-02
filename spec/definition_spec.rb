@@ -43,11 +43,11 @@ describe ('#definition') do
     end
   end
 
-  # describe('.find') do
-  #   it("finds a word in the @@word hash by it's id") do
-  #   expect(Word.find(@word1.id)).to(eq(@word1))
-  #   end
-  # end
+  describe('.find') do
+    it("finds a definition in the @@definition hash by it's id") do
+    expect(Definition.find(@definition1.id)).to(eq(@definition1))
+    end
+  end
 
   # describe('#update') do
   #   it("updates a word in the @@word hash by it's id") do
