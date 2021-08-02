@@ -32,21 +32,17 @@ describe ('#definition') do
 
   describe('.clear') do
     it("clears all instances of defintion attached to the definition class") do
-    @def1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
-    @def1.save
-    @def2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
-    @def2.save
     Definition.clear
     expect(Word.all).to(eq([]))
     end
   end
 
-  # describe('#delete') do
-  #   it("deletes a word by id") do
-  #   @word1.delete
-  #   expect(Word.all).to(eq([@word2]))
-  #   end
-  # end
+  describe('#delete') do
+    it("deletes a meaning by it's id") do
+    @def1.delete
+    expect(Word.all).to(eq([@def2]))
+    end
+  end
 
   # describe('.find') do
   #   it("finds a word in the @@word hash by it's id") do
