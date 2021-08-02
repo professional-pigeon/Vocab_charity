@@ -1,11 +1,13 @@
 require "rspec"
 require "pry"
 require "word"
+require "definition"
 
 describe ('#Word') do
 
   before(:each) do
     Word.clear
+    Definition.clear
     @word1 = Word.new({:word => "ubiquitous"}, nil)
     @word1.save
     @word2 = Word.new({:word => "murmors",}, nil)
@@ -59,7 +61,7 @@ describe('#meanings') do
       @definition1.save
       @definition2 = Definition.new({:meaning => "to be thought about", :word_id => @word1.id}, nil)
       @definition2.save
-      expect(@word1.meanings).to(eq([definition1, definition2]))
+      expect(@word1.definitions).to(eq([@definition1, @definition2]))
     end
   end
 
