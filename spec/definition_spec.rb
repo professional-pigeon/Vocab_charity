@@ -1,11 +1,13 @@
 require "rspec"
 require "pry"
 require "definition"
+require "word"
 
 describe ('#definition') do
 
   before(:each) do
     Definition.clear
+    Word.clear
     @definition1 = Definition.new({:meaning => "to be defined", :word_id => 1}, nil)
     @definition1.save
     @definition2 = Definition.new({:meaning => "to be thought about", :word_id => 1}, nil)
@@ -59,6 +61,14 @@ describe ('#definition') do
   describe('.find_by_word') do
     it("finds a definition in the @@definition hash by it's id") do
     expect(Definition.find_by_word(@definition1.word_id)).to(eq([@definition1, @definition2]))
+    end
+  end
+
+  describe('#word') do
+    it("returns the word a meaning belongs to") do
+      @word1 = Word.new({:word => "ubiquitous"}, nil)
+      @word1.save
+      expect(@definition1.words).to(eq(@word1))
     end
   end
 

@@ -53,4 +53,8 @@ class Definition
     meanings
   end
 
+  def word
+    Word.find(self.word_id)
+  end
+
 end
